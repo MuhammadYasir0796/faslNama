@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intro</title>
+<link rel="stylesheet" href="introStyle.css">
+</head>
+<body>
+
+<video id="videoPlayer" autoplay muted playsinline preload="auto">
+  <source src="intro.mp4" type="video/mp4">
+</video>
+
+<a href="your.html">
+  <button id="enterButton">CONTINUE</button>
+</a>
+
+<script>
+  const video = document.getElementById("videoPlayer");
+  const enterButton = document.getElementById("enterButton");
+
+  video.addEventListener("ended", () => {
+      enterButton.style.display = "block";
+      setTimeout(() => {
+         enterButton.classList.add("show");
+      }, 50);
+  });
+</script>
+
+
+</body>
+</html>

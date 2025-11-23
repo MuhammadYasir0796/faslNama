@@ -1,0 +1,240 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* GENERAL PAGE LAYOUT */
+body {
+    background-image: url(bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+}
+
+/* NAVBAR SIDEBAR */
+.navbar {
+    width: 200px;
+    min-height: 100vh;
+    background: #222;
+    padding-top: 20px;
+}
+
+.navbar ul {
+    list-style: none;
+}
+
+.navbar li {
+    margin-bottom: 5px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    transition: 0.2s;
+}
+
+.navbar a:hover:not(.active) {
+    background: #444;
+}
+
+/* ACTIVE PAGE */
+.active {
+    background: brown;
+}
+
+.active:hover {
+    background: chocolate;
+}
+
+/* MAIN CONTENT AREA */
+main {
+    padding: 30px;
+    width: 100%;
+}
+/* HEADER */
+header {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    width: 100%;
+    padding: 5px 50px;
+    color: rgb(180, 25, 25);
+    text-align: left;
+    margin-bottom: 0;
+    border-bottom: 5px ridge silver;
+    border-radius: 50px;
+}
+h1{
+    background-color: bisque;
+    max-width: 200px;
+    text-align: center;
+    border-radius: 50px;
+    box-shadow: 3px 3px 5px rgb(48, 196, 246),-3px -3px 5px rgb(240, 33, 33);
+}
+.mainS{
+    margin: 20px;
+}
+h2{
+    background-color: bisque;
+    color: brown;
+    text-align: center;
+    width: 200px;
+    position: relative;
+    left: 35%;
+    border-radius: 50px;
+    border-bottom: 5px ridge rgb(158, 158, 8);
+    box-shadow: 3px 3px 5px black,-3px -3px 5px white;
+}
+h4{
+    margin: 10px;
+    margin-top: 20px;
+    background-color: blanchedalmond;
+    padding: 5px;
+    padding-left: 20px;
+    border-radius: 50px 0px 50px 0px;
+}
+.mainPart{
+    background-color: bisque;
+    min-height: 232px;
+    box-shadow: 3px 3px 5px rgb(69, 66, 66),-3px -3px 5px rgb(86, 84, 84);
+    border: 2px groove red;
+    border-radius: 20px;
+}
+.weather {
+    margin: 40px auto;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+
+    /* Glassmorphism */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    width: 80%;
+}
+
+/* Individual columns */
+.weather1, .weather2, .weather3 {
+    flex: 1;
+    padding: 10px 20px;
+    border-radius: 12px;
+
+    /* Subtle inner card */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    transition: 0.3s ease;
+}
+
+/* Hover animation */
+.weather1:hover, 
+.weather2:hover, 
+.weather3:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
+}
+
+/* Text inside cards */
+.weather p {
+    padding: 12px 5px;
+    margin: 10px 0;
+    font-size: 17px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    color: #f74545;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Remove last border */
+.weather p:last-child {
+    border-bottom: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 700px) {
+    .weather {
+        flex-direction: column;
+        gap: 15px;
+        width: 95%;
+    }
+}
+.weather p {
+    padding :0px;
+}
+#temp,
+#feelsLike,
+#probabilityOfRain,
+#weatherCondition,
+#humidity,
+#windSpeed,
+#atmosphericPressure,
+#visibility,
+#airQuality{
+    color: #7b68ee;
+}
+
+
+/* Search Box Styling */
+.searchBox {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px auto 40px;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.searchBox input {
+    width: 70%;
+    padding: 14px 18px;
+    font-size: 17px;
+    border: none;
+
+    /* Glass effect */
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    color: #fff;
+
+    border-radius: 12px;
+    outline: none;
+    transition: 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.searchBox input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.searchBox input:focus {
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(1.03);
+}
+
+/* Search button */
+.searchBox button {
+    padding: 14px 25px;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+
+    /* Button gradient */
+    background: linear-gradient(135deg, #e73c1e, #836fff);
+    color: white;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.searchBox button:hover {
+    transform: scale(1.07);
+    background: linear-gradient(135deg, #7b68ee, #9f8fff);
+}

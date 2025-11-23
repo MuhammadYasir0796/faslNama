@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaslNama - About</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c010ac201b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="your.html" class="active"><i class="fa-solid fa-location-crosshairs"></i> Your Weather</a></li>
+            <li><a href="search.html"><i class="fa-brands fa-searchengin"></i> Search</a></li>
+        </ul>
+    </nav>
+    <main>
+        <header>
+            <h1>FaslNama</h1>
+        </header>
+        <section class="mainS">
+            <h2>Your Weather</h2>
+            <h4 id="city">Location: </h4>
+            <div class="mainPart">
+                <div class="weather">
+                    <div class="weather1">
+                        <p>Temperature <p id="temp">______</p></p>
+                        <p >Feels Like <p id="feelsLike">______</p> </p>
+                        <p >Cloud <p id="cloud">______</p> </p>
+                    </div>
+                    <div class="weather2">
+                        <p >Weather Condition <p id="weatherCondition">______</p> </p>
+                        <p >Humidity <p id="humidity">______</p> </p>
+                        <p >Wind Speed <p id="windSpeed">______</p> </p>
+                    </div>
+                    <div class="weather3">
+                        <p >Atmospheric Pressure <p id="atmosphericPressure">______</p> </p>
+                        <p >Visibility <p id="visibility">______</p> </p>
+                        <p >Air Quality Index (AQI) <p id="airQuality">______</p> </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        fetch("https://ipwho.is/")
+        .then(res => res.json())
+        .then(data => {
+        const city = data.city;
+        document.getElementById("city").textContent = "Location: " + city;
+
+        return fetch("https://api.weatherapi.com/v1/current.json?key=c872ed8e67c74e188df111445252211&q=" + city + "&aqi=yes");
+        })
+        .then(res => res.json())
+        .then(weather => {
+        console.log("Temperature:", weather.current.temp_c);
+        document.getElementById("temp").textContent = weather.current.temp_c + "°C";
+        document.getElementById("feelsLike").textContent = weather.current.feelslike_c + "°C";
+        document.getElementById("cloud").textContent = weather.current.cloud + "%";
+        document.getElementById("weatherCondition").textContent = weather.current.condition.text;
+        document.getElementById("humidity").textContent = weather.current.humidity + "%";
+        document.getElementById("windSpeed").textContent = weather.current.wind_kph + "kph";
+        document.getElementById("atmosphericPressure").textContent = weather.current.pressure_mb + "mb";
+        document.getElementById("visibility").textContent = weather.current.vis_km + "km";
+        document.getElementById("airQuality").textContent = weather.current.air_quality["us-epa-index"];
+        })
+        .catch(err => console.log(err));
+
+</script>
+
+</body>
+</html>
